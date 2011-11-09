@@ -235,9 +235,13 @@ public class KeyboardChangerActivity extends Activity {
 					e1.printStackTrace();
 				}
 
+				cmd.su.run("rm /system/usr/keychars/pm8058-keypad.kcm.bin");
 				cmd.su.run("rm /system/usr/keychars/qwerty.kcm.bin");
 				cmd.su.run("cp /data/local/tmp/qwerty.kcm.bin" + " /system/usr/keychars/qwerty.kcm.bin");
+				cmd.su.run("cp /data/local/tmp/qwerty.kcm.bin" + " /system/usr/keychars/pm8058-keypad.kcm.bin");
+				cmd.su.run("rm /system/usr/keylayout/pm8058-keypad.kl");
 				cmd.su.run("rm /system/usr/keylayout/qwerty.kl");
+				cmd.su.run("cp /data/local/tmp/qwerty.kl" + " /system/usr/keylayout/pm8058-keypad.kl");
 				cmd.su.run("cp /data/local/tmp/qwerty.kl" + " /system/usr/keylayout/qwerty.kl");
 				cmd.su.run("chmod 644 /system/usr/keychars/qwerty.kcm.bin");
 				cmd.su.run("chmod 644 /system/usr/keylayout/qwerty.kl");
